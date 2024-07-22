@@ -1,3 +1,6 @@
+// Pathfinding Visualizer and maze solver using A* and Dijkstra's Algorithm
+
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <iostream>
@@ -19,7 +22,8 @@ using namespace sf;
 
 #define num 60 // Number of cells in a row
 
-// Global variables
+//-------------------------- Global variables ----------------
+
 vector<pair<int, int>> path; // Shortest path
 bool explored[num][num]; // Explored cells
 int grid[num][num]; // Map with obstacle
@@ -29,7 +33,8 @@ int stepsTaken = 0;
 float timeTaken = 0.0f;
 int source_x = 2, source_y = 2, dest_x = 50, dest_y = 56; // Origin and Goal coordinates
 
-// Function to clear the path
+// -------------------------  Function to clear the path -----------------------
+
 void clearPath() {
     path.clear();
     memset(explored, false, sizeof(explored));
@@ -49,13 +54,14 @@ void clearObstacles() {
     clearPath();
 }
 
-// Function to clear the entire board
+// ------------------------------------------- Function to clear the entire board -------------------------------
 void clearBoard() {
     clearObstacles();
     clearPath();
 }
 
-// Function to create a maze using Recursive Backtracking algorithm
+// ------------------------------------------ Function to create a maze using Recursive Backtracking algorithm --------------------
+
 void createMaze() {
     clearObstacles();
     
@@ -119,7 +125,7 @@ void createMaze() {
     clearPath();
 }
 
-// Dijkstra's algorithm
+// ---------------------------------------- Dijkstra's algorithm ----------------------------------
 void dijkstra(int source_x, int source_y, int dest_x, int dest_y) {
     clearPath();
     auto start = chrono::high_resolution_clock::now();
@@ -160,7 +166,8 @@ void dijkstra(int source_x, int source_y, int dest_x, int dest_y) {
         }
     }
 
-    // Reconstruct path
+    // -------------------------------------------------------- Reconstruct path -----------------------------
+    
     int x = dest_x, y = dest_y;
     while (x != source_x || y != source_y) {
         path.push_back({x, y});
@@ -180,7 +187,8 @@ void dijkstra(int source_x, int source_y, int dest_x, int dest_y) {
     algorithmUsed = "Dijkstra";
 }
 
-// A* algorithm
+// ------------------------------------------------------------ A* algorithm --------------------------------------
+
 void astar(int source_x, int source_y, int dest_x, int dest_y) {
     clearPath();
     auto start = chrono::high_resolution_clock::now();
@@ -228,7 +236,7 @@ void astar(int source_x, int source_y, int dest_x, int dest_y) {
         }
     }
 
-    // Reconstruct path
+    // ------------------------------------------ Reconstruct path ---------------------------------------
     int x = dest_x, y = dest_y;
     while (x != source_x || y != source_y) {
         path.push_back({x, y});
@@ -262,14 +270,14 @@ int main() {
 
     RenderWindow window(VideoMode(1000, 600), "Pathfinding Visualizer");
 
-    // Load font
+    // --------------------- Load font ---------------------
     Font font;
     if (!font.loadFromFile("arial.ttf")) {
         cerr << "Failed to load font" << endl;
         return -1;
     }
 
-    // Create text objects
+    // ----------------------- Create text objects -------------------
     Text textDijkstra("Dijkstra", font, 15);
     Text textAStar("A*", font, 15);
     Text textCreateMaze("Create Maze", font, 15);
@@ -278,7 +286,7 @@ int main() {
     Text textClearBoard("Clear Board", font, 15);
     Text textInfo("", font, 12);
 
-    // Create buttons
+    // ----------------------- Create buttons ---------------------
     RectangleShape buttonDijkstra(Vector2f(75, 25));
     RectangleShape buttonAStar(Vector2f(75, 25));
     RectangleShape buttonCreateMaze(Vector2f(100, 25));
@@ -287,7 +295,7 @@ int main() {
     RectangleShape buttonClearBoard(Vector2f(100, 25));
     RectangleShape infoContainer(Vector2f(200, 80));
 
-    // Set button colors
+    // ---------------------- Set button colors ----------------------
     buttonDijkstra.setFillColor(Color::Green);
     buttonAStar.setFillColor(Color::Magenta);
     buttonCreateMaze.setFillColor(Color::Cyan);
@@ -298,7 +306,7 @@ int main() {
     infoContainer.setOutlineColor(Color::Black);
     infoContainer.setOutlineThickness(2);
 
-    // Set button positions
+    // ---------------------- Set button positions ------------------------
     buttonDijkstra.setPosition(610, 10);
     buttonAStar.setPosition(610, 45);
     buttonCreateMaze.setPosition(610, 80);
@@ -307,7 +315,7 @@ int main() {
     buttonClearMaze.setPosition(610, 240);
     buttonClearBoard.setPosition(610, 275);
 
-    // Set text positions
+    // ----------------------- Set text positions ---------------------------
     textDijkstra.setPosition(620, 15);
     textAStar.setPosition(635, 50);
     textCreateMaze.setPosition(615, 85);
@@ -315,7 +323,7 @@ int main() {
     textClearMaze.setPosition(620, 245);
     textClearBoard.setPosition(620, 280);
 
-    // Create cell shapes
+    // ----------------------- Create rectangle cell shapes ------------------------
     RectangleShape cellShape(Vector2f(10, 10));
     cellShape.setOutlineThickness(1);
     cellShape.setOutlineColor(Color::Black);
@@ -390,14 +398,14 @@ int main() {
             }
         }
 
-        // Draw path
+        // ------------------------- Draw path ------------------------
         for (const auto& p : path) {
             cellShape.setPosition(p.second * 10, p.first * 10);
             cellShape.setFillColor(Color::Green);
             window.draw(cellShape);
         }
 
-        // Draw source and destination
+        // -------------------------------- Draw source and destination --------------------
         cellShape.setPosition(source_y * 10, source_x * 10);
         cellShape.setFillColor(Color::Blue);
         window.draw(cellShape);
@@ -414,7 +422,7 @@ int main() {
         window.draw(buttonClearBoard);
         window.draw(infoContainer);
 
-        // Draw button texts
+        //-------------------------  Draw button texts
         window.draw(textDijkstra);
         window.draw(textAStar);
         window.draw(textCreateMaze);
@@ -422,7 +430,7 @@ int main() {
         window.draw(textClearMaze);
         window.draw(textClearBoard);
 
-        // Update and draw info text
+        // ------------------------------ Update and draw info text
         if (isPathFound) {
             stringstream ss;
             ss << "Algorithm: " << algorithmUsed << "\n";
