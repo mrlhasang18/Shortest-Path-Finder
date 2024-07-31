@@ -167,6 +167,7 @@ int main() {
     size_t visualizationIndex = 0;
     Vector2i lastPos;
     
+    // Main loop for window rendering
     while (window.isOpen()) {
         Event event;
         while (window.pollEvent(event)) {
@@ -178,6 +179,7 @@ int main() {
                 window.close();
                 return 0;  // Exit the program
             }
+            // Event handling
             if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
                 int X = event.mouseButton.x;
                 int Y = event.mouseButton.y;
