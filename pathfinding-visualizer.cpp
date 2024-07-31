@@ -49,12 +49,12 @@ int source_x = 2, source_y = 2, dest_x = 50, dest_y = 56; // Origin and Goal coo
 bool isSettingStart = false;
 bool isSettingDest = false;
 
-// New variables for gradual updating
+// variables for gradual updating
 chrono::high_resolution_clock::time_point startTime;
 bool isSearching = false;
 string statusMessage = "";
 
-// Add a new global variable to track if the destination has been reached
+// variable to track if the destination has been reached
 bool destinationReached = false;
 chrono::high_resolution_clock::time_point visualizationStartTime;
 bool isVisualizationTimeRunning = false;
