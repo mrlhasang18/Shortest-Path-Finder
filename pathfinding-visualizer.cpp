@@ -128,7 +128,7 @@ int main() {
     // Set button colors
     buttonDijkstra.setFillColor(Color::Green);
     buttonAStar.setFillColor(Color::Magenta);
-    buttonCreateMaze.setFillColor(Color::Cyan);
+    buttonCreateMaze.setFillColor(Color::Black);
     buttonClearMaze.setFillColor(Color::Red);
     buttonSetStart.setFillColor(Color::Blue);
     buttonSetDest.setFillColor(Color::Red);
