@@ -127,11 +127,29 @@ int main() {
 
     // Set button colors
     buttonDijkstra.setFillColor(Color::Green);
+    buttonDijkstra.setOutlineColor(Color::Black);
+    buttonDijkstra.setOutlineThickness(2);
+    
     buttonAStar.setFillColor(Color::Magenta);
+    buttonAStar.setOutlineColor(Color::Black);
+    buttonAStar.setOutlineThickness(2);
+    
     buttonCreateMaze.setFillColor(Color::Black);
+    buttonCreateMaze.setOutlineColor(Color::Black);
+    buttonCreateMaze.setOutlineThickness(2);
+    
     buttonClearMaze.setFillColor(Color::Red);
+    buttonClearMaze.setOutlineColor(Color::Black);
+    buttonClearMaze.setOutlineThickness(2);
+    
     buttonSetStart.setFillColor(Color::Blue);
+    buttonSetStart.setOutlineColor(Color::Black);
+    buttonSetStart.setOutlineThickness(2);
+    
     buttonSetDest.setFillColor(Color::Red);
+    buttonSetDest.setOutlineColor(Color::Black);
+    buttonSetDest.setOutlineThickness(2);
+    
     infoContainer.setFillColor(Color::White);
     infoContainer.setOutlineColor(Color::Black);
     infoContainer.setOutlineThickness(2);
