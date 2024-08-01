@@ -138,10 +138,10 @@ void astar(int source_x, int source_y, int dest_x, int dest_y) {
             break;
         }
 
-        int dx[] = {0, 0, 1, -1, 1, 1, -1, -1};
-        int dy[] = {1, -1, 0, 0, 1, -1, 1, -1};
+        int dx[] = {0, 0, 1, -1};
+        int dy[] = {1, -1, 0, 0};
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 4; i++) {
             int nx = x + dx[i];
             int ny = y + dy[i];
             if (nx >= 0 && nx < num && ny >= 0 && ny < num && grid[nx][ny] == 1 && !explored[nx][ny]) {
