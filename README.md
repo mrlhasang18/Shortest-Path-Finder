@@ -2,7 +2,14 @@
 Mini Project on visualizing pathfinding algorithms + maze solver using Pathfinding Algorithms like A*: Informed and Dijkstra's: Un-Informed.
 
 This project simulates real-world navigation algorithms like Dijkstra's and A*—the same kind used in Google Maps to find the quickest and shortest route between source and destination.
+# Team members:
+- Ashutosh Dhungana
 
+- Lhasang Tulku Lama
+
+- Salin Bade
+
+- Sampada Shrestha
 # Algorithms used:
 1. Bresenham's Line Drawing Algorithm: for smooth line Drawing
 
